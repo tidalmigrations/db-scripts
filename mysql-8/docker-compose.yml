@@ -1,0 +1,25 @@
+version: '3.7'
+services:
+    mysql:
+        image: mysql:8.0
+        restart: always
+        environment:
+          - MYSQL_ROOT_USER=root
+          - MYSQL_ROOT_PASSWORD=root-secret
+          - MYSQL_DATABASE=tidal_db
+          
+        logging:
+          options:
+            max-size: 10m
+            max-file: "3"
+        ports:
+          - '3306:3306'
+        volumes:
+          - ./mysql-data:/var/lib/mysql-data/data
+          # copy the sql script to create tables
+          - ./sql/create_tables.sql:/docker-entrypoint-initdb.d/create_tables.sql
+          # # copy the sql script to fill tables
+          - ./sql/fill_tables.sql:/docker-entrypoint-initdb.d/fill_tables.sql
+          # - ./sql/fill_tables.sql:/docker-entrypoint-initdb.d/fill_tables.sql
+          # copy the sql script to create tidal user and permissions
+          - ./sql/tidal_setup.sql:/docker-entrypoint-initdb.d/tidal_setup.sql
