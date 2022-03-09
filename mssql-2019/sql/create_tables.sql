@@ -1,4 +1,7 @@
-Use SaveOnClouds
+CREATE DATABASE DemoMSSQLDatabase
+GO
+
+Use DemoMSSQLDatabase
 Go
 
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
