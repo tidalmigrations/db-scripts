@@ -5,6 +5,8 @@ services:
     environment: 
       - SA_PASSWORD=Dev12345
       - ACCEPT_EULA=Y
+    ports:
+      - 1433:1433
     volumes:
      - ./sql:/scripts/
     command:
@@ -13,6 +15,7 @@ services:
       - |
         # Launch mssql and send to background
         /opt/mssql/bin/sqlservr &
+        
         # Wait for it to be available
         echo "Waiting for MS SQL to be available ⏳"
         /opt/mssql-tools/bin/sqlcmd -l 30 -S localhost -h-1 -V1 -U sa -P $$SA_PASSWORD -Q "SET NOCOUNT ON SELECT \"YAY WE ARE UP\" , @@servername"
@@ -23,9 +26,12 @@ services:
           is_up=$$?
           sleep 5 
         done
-        # Run every script in /scripts
-        for foo in /scripts/*.sql
-          do /opt/mssql-tools/bin/sqlcmd -U sa -P $$SA_PASSWORD -l 30 -e -i $$foo
-        done
+
+        # Run the SQL scripts in order
+        /opt/mssql-tools/bin/sqlcmd -U SA -P $$SA_PASSWORD -l 30 -e -i /scripts/create_database.sql
+        /opt/mssql-tools/bin/sqlcmd -U SA -P $$SA_PASSWORD -l 30 -e -i /scripts/all_tables.sql
+        /opt/mssql-tools/bin/sqlcmd -U SA -P $$SA_PASSWORD -l 30 -e -i /scripts/demo_data.sql
+        /opt/mssql-tools/bin/sqlcmd -U SA -P $$SA_PASSWORD -l 30 -e -i /scripts/tidal_setup.sql
+
         # So that the container doesn't shut down, sleep this thread
         sleep infinity
