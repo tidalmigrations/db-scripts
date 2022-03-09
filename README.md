@@ -43,3 +43,5 @@ db-scripts
 
 ### Troubleshooting
 If you are running the scrips inside an ec2 instance, make sure you configure its security group and inbound rules to allow for port connectivity.
+
+SQL Server requires a machine with at least 2GB RAM.
