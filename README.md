@@ -27,6 +27,12 @@ db-scripts
 |       ├── create_tables.sql
 |       ├── fill_tables.sql
 |       └── tidal_setup.sql
+├── mssql-2019
+|   ├── docker-compose.yml
+|   └── sql
+|       ├── create_tables.sql
+|       ├── fill_tables.sql
+|       └── tidal_setup.sql
 ├── ...more to come
 
 ```
