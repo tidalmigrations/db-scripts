@@ -1,8 +1,14 @@
 version: '3.7'
 services:
     oracle:
-        image: samdesmondking/oracle-21c-xe:demo-data
+        image: samdesmondking/oracle-21c-xe:latest
         restart: always
+        environment:
+          - ORACLE_CHARACTERSET=AL32UTF8
+          - ORACLE_PWD=Dev1234
         ports:
           - '51521:1521'
           - '55500:5500'
+        volumes:
+          # copy the sql script to create and populate the database
+          - ./sql/create_database.sql:/opt/oracle/scripts/setup/create_database.sql
