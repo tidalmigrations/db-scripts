@@ -1,20 +1,20 @@
 
 -- Creation of product table
-CREATE TABLE IF NOT EXISTS product (
+CREATE TABLE product (
   product_id INT NOT NULL,
   name varchar(250) NOT NULL,
   PRIMARY KEY (product_id)
 );
 
 -- Creation of country table
-CREATE TABLE IF NOT EXISTS country (
+CREATE TABLE country (
   country_id INT NOT NULL,
   country_name varchar(450) NOT NULL,
   PRIMARY KEY (country_id)
 );
 
 -- Creation of city table
-CREATE TABLE IF NOT EXISTS city (
+CREATE TABLE city (
   city_id INT NOT NULL,
   city_name varchar(450) NOT NULL,
   country_id INT NOT NULL,
@@ -25,7 +25,7 @@ CREATE TABLE IF NOT EXISTS city (
 );
 
 -- Creation of store table
-CREATE TABLE IF NOT EXISTS store (
+CREATE TABLE store (
   store_id INT NOT NULL,
   name varchar(250) NOT NULL,
   city_id INT NOT NULL,
@@ -36,21 +36,21 @@ CREATE TABLE IF NOT EXISTS store (
 );
 
 -- Creation of user table
-CREATE TABLE IF NOT EXISTS users (
+CREATE TABLE users (
   user_id INT NOT NULL,
   name varchar(250) NOT NULL,
   PRIMARY KEY (user_id)
 );
 
 -- Creation of status_name table
-CREATE TABLE IF NOT EXISTS status_name (
+CREATE TABLE status_name (
   status_name_id INT NOT NULL,
   status_name varchar(450) NOT NULL,
   PRIMARY KEY (status_name_id)
 );
 
 -- Creation of sale table
-CREATE TABLE IF NOT EXISTS sale (
+CREATE TABLE sale (
   sale_id varchar(200) NOT NULL,
   amount DECIMAL(20,3) NOT NULL,
   date_sale DATE NOT NULL,
@@ -70,7 +70,7 @@ CREATE TABLE IF NOT EXISTS sale (
 );
 
 -- Creation of order_status table
-CREATE TABLE IF NOT EXISTS order_status (
+CREATE TABLE order_status (
   order_status_id varchar(200) NOT NULL,
   update_at DATE NOT NULL,
   sale_id varchar(200) NOT NULL,
