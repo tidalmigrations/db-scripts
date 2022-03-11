@@ -1,18 +1,8 @@
 version: '3.7'
 services:
     oracle:
-        image: samdesmondking/oracle-21c-xe:latest
+        image: samdesmondking/oracle-21c-xe:demo-data
         restart: always
-        environment:
-          - ORACLE_CHARACTERSET=AL32UTF8
-          - ORACLE_PWD=Dev1234
         ports:
           - '51521:1521'
           - '55500:5500'
-        volumes:
-          # copy the sql script to create tables
-          - ./sql/create_tables.sql:/opt/oracle/scripts/setup/create_tables.sql
-          # copy the sql script to fill tables
-          - ./sql/fill_tables.sql:/opt/oracle/scripts/setup/fill_tables.sql
-          # copy the sql script to create tidal user and permissions
-          - ./sql/tidal_setup.sql:/opt/oracle/scripts/setup/tidal_setup.sql
