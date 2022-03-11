@@ -29,6 +29,10 @@ db-scripts
 |       ├── create_tables.sql
 |       ├── fill_tables.sql
 |       └── tidal_setup.sql
+├── oracle-21c-xe
+|   ├── docker-compose.yml
+|   └── sql
+|       ├── create_database.sql
 ├── ...more to come
 
 ```
