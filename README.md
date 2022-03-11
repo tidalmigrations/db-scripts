@@ -51,5 +51,3 @@ db-scripts
 If you are running the scrips inside an ec2 instance, make sure you configure its security group and inbound rules to allow for port connectivity.
 
 SQL Server requires a machine with at least 2GB RAM.
-
-Note that the root password for the SQL Server database is `Dev12345` rather than `Dev1234` due to an 8 character minimum.
