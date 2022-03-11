@@ -5,7 +5,7 @@ services:
         restart: always
         environment:
           - ORACLE_CHARACTERSET=AL32UTF8
-          - ORACLE_PWD=Dev1234
+          - ORACLE_PASSWORD=Dev1234
         ports:
           - '51521:1521'
           - '55500:5500'
