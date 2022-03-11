@@ -1,8 +1,3 @@
--- Note --
-
--- This data  is pre-installed on the docker image, so there's no need to run this script again.
--- Script is included here for reference only.
-
 -- Creation of product table
 CREATE TABLE product (
   product_id INT NOT NULL,
