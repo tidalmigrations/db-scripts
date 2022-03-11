@@ -83,3 +83,4 @@ CREATE TABLE IF NOT EXISTS order_status (
       FOREIGN KEY(status_name_id) 
 	  REFERENCES status_name(status_name_id)  
 );
+
