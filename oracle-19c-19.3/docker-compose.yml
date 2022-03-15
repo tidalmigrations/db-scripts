@@ -1,11 +1,11 @@
 version: '3.7'
 services:
     oracle:
-        image: samdesmondking/oracle-21c-xe:latest
+        build: ./**
         restart: always
         environment:
           - ORACLE_CHARACTERSET=AL32UTF8
-          - ORACLE_PASSWORD=Dev1234
+          - ORACLE_PWD=Dev1234
         ports:
           - '51521:1521'
           - '55500:5500'
