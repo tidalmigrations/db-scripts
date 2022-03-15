@@ -1,7 +1,7 @@
 version: '3.7'
 services:
     oracle:
-        build: ./**
+        build: ./19.3.0
         restart: always
         environment:
           - ORACLE_CHARACTERSET=AL32UTF8
