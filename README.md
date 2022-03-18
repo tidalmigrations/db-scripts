@@ -46,6 +46,15 @@ db-scripts
 
 3. That is it. The Database will be up and running and ready to be analyzed.
 
+### Connecting
+
+#### MSSQL-2019
+
+Connect as root user
+`sqlcmd -S "<public-ipv4-dns>,1433" -U SA -P "Dev12345"`
+
+Connect as Tidal user
+`sqlcmd -S "<public-ipv4-dns>,1433" -U Tidal -P "Dev1234"`
 
 ### Troubleshooting
 If you are running the scrips inside an ec2 instance, make sure you configure its security group and inbound rules to allow for port connectivity.
