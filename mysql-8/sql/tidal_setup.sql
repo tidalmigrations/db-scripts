@@ -1,4 +1,4 @@
-CREATE USER 'tidal'@'%' IDENTIFIED BY 'Dev1234';
+CREATE USER 'tidal'@'%' IDENTIFIED BY 'Dev12345';
 GRANT PROCESS,REFERENCES, SHOW DATABASES, SHOW VIEW ON *.* TO 'tidal'@'%';
 GRANT SELECT ON sys.* TO 'tidal'@'%';
 GRANT SELECT ON performance_schema.* TO 'tidal'@'%';
