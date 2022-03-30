@@ -4,31 +4,27 @@ A compilation of Containerized Databases with minimum data and permissions confi
 
 For more information about the permissions Tidal Tools needs to be able to perform database analysis, Check this [guide](https://guides.tidalmg.com/analyze-database.html)
 
-
 ### Requirements
 
 - Docker
 - Docker Compose
 
-
 ### Contents
 
-```
+```text
 db-scripts
+├── docker-compose.yml
 ├── mysql-8
-|   ├── docker-compose.yml
 |   └── sql
 |       ├── create_tables.sql
 |       ├── fill_tables.sql
 |       └── tidal_setup.sql
 ├── postgres-10-5
-|   ├── docker-compose.yml
 |   └── sql
 |       ├── create_tables.sql
 |       ├── fill_tables.sql
 |       └── tidal_setup.sql
 ├── mssql-2019
-|   ├── docker-compose.yml
 |   └── sql
 |       ├── create_tables.sql
 |       ├── fill_tables.sql
@@ -37,14 +33,9 @@ db-scripts
 
 ```
 
-
 ### How to use
 
-1. Navigate inside the database you would like to start
-
-2. Run `docker-compose up -d` 
-
-3. That is it. The Database will be up and running and ready to be analyzed.
+Simply run `docker-compose up -d` and the databases will be up and running and ready to be analyzed.
 
 ### Connecting
 
