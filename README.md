@@ -49,6 +49,9 @@ Simply run `docker-compose up -d` and the databases will be up and running and r
 Connect as root user
 `sqlcmd -S "<public-ipv4-dns>,1433" -U SA -P "Dev12345"`
 
+Connect as Tidal user
+`sqlcmd -S "<public-ipv4-dns>,1433" -U Tidal -P "Dev1234"`
+
 #### Oracle 19c-19.3
 
 Additional steps are required to spin up the oracle database. These instructions assume you're using the `databases` terraform script from `infrastructure-deployments` to create the instance. If not, adjust the paths in the provided commands accordingly.
