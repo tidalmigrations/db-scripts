@@ -12,5 +12,3 @@ services:
         volumes:
           # copy the sql script to the /scripts dir
           - ./sql/create_database.sql:/opt/oracle/scripts/create_database.sql
-          # copy the setup script to the /scripts/setup dir, which is run automatically
-          - ./sql/create_database.sql:/opt/oracle/scripts/setup/setup.sh
