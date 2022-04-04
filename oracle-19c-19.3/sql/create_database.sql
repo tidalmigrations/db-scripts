@@ -1,15 +1,18 @@
+-- Creation of product table
 CREATE TABLE product (
   product_id INT NOT NULL,
   name varchar(250) NOT NULL,
   PRIMARY KEY (product_id)
 );
 
+-- Creation of country table
 CREATE TABLE country (
   country_id INT NOT NULL,
   country_name varchar(450) NOT NULL,
   PRIMARY KEY (country_id)
 );
 
+-- Creation of city table
 CREATE TABLE city (
   city_id INT NOT NULL,
   city_name varchar(450) NOT NULL,
@@ -20,6 +23,7 @@ CREATE TABLE city (
 	  REFERENCES country(country_id)
 );
 
+-- Creation of store table
 CREATE TABLE store (
   store_id INT NOT NULL,
   name varchar(250) NOT NULL,
@@ -30,18 +34,21 @@ CREATE TABLE store (
 	  REFERENCES city(city_id)
 );
 
+-- Creation of user table
 CREATE TABLE users (
   user_id INT NOT NULL,
   name varchar(250) NOT NULL,
   PRIMARY KEY (user_id)
 );
 
+-- Creation of status_name table
 CREATE TABLE status_name (
   status_name_id INT NOT NULL,
   status_name varchar(450) NOT NULL,
   PRIMARY KEY (status_name_id)
 );
 
+-- Creation of sale table
 CREATE TABLE sale (
   sale_id varchar(200) NOT NULL,
   amount DECIMAL(20,3) NOT NULL,
@@ -61,6 +68,7 @@ CREATE TABLE sale (
 	  REFERENCES store(store_id)	  
 );
 
+-- Creation of order_status table
 CREATE TABLE order_status (
   order_status_id varchar(200) NOT NULL,
   update_at DATE NOT NULL,
@@ -74,6 +82,8 @@ CREATE TABLE order_status (
       FOREIGN KEY(status_name_id) 
 	  REFERENCES status_name(status_name_id)  
 );
+
+-- Populate tables --
 
 INSERT ALL
   INTO product (product_id, name) VALUES (1, 'Guitar')
@@ -119,6 +129,8 @@ INSERT ALL
   INTO status_name (status_name_id, status_name) VALUES (3, 'Pending')
   INTO status_name (status_name_id, status_name) VALUES (4, 'Removed')
 SELECT * FROM dual;
+
+-- Create user for Database Analysis --
 
 CREATE USER tidal identified by "Dev12345";
 GRANT CREATE SESSION to tidal;
