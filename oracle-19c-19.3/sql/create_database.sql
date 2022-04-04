@@ -132,6 +132,6 @@ SELECT * FROM dual;
 
 -- Create user for Database Analysis --
 
-CREATE USER tidal identified by "Dev1234";
+CREATE USER tidal identified by "Dev12345";
 GRANT CREATE SESSION to tidal;
 GRANT select_catalog_role to tidal;
