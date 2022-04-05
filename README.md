@@ -54,17 +54,9 @@ Connect as Tidal user
 
 #### Oracle 19c-19.3
 
-Additional steps are required to spin up the oracle database. These instructions assume you're using the `databases` terraform script from `infrastructure-deployments` to create the instance. If not, adjust the paths in the provided commands accordingly.
+Additional steps are required to spin up the oracle database. These instructions assume you're using the `oracle-databases` terraform script from `infrastructure-deployments` to create the instance.
 
-first, download the oracle binaries into the `19.3.0` directory. This should take about 10 minutes. These binaries are stored in an S3 bucket in `riptide` called `oracle-binaries-riptide`.
-
-`sudo wget -P /home/ubuntu/db-scripts/oracle-19c-19.3/19.3.0 "https://oracle-binaries-riptide.s3.ca-central-1.amazonaws.com/LINUX.X64_193000_db_home.zip"`
-
-Next, run docker compose up. You can omit the `-d` from this command to run it in the foreground and watch the process.
-
-`sudo docker-compose -f /home/ubuntu/db-scripts/oracle-19c-19.3/docker-compose.yml up -d`
-
-After the build completes, run `docker ps` to check the health of the container. Wait until it reads `healthy` before attempting to connect. This is likely to take some time, around half an hour. It will read `unhealthy` before `healthy` because of how long it takes oracle to start.
+After deploying the above instance, it will take around 45 minutes for the user data script to complete and the container to be initialized. Run `docker ps` to check the health of the container. Wait until it reads `healthy` before attempting to connect. It will read `unhealthy` before `healthy` because of how long it takes oracle to start.
 
 After confirming that the container is healthy, we need to connect to the database and fill it with data.
 
