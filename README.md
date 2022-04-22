@@ -37,6 +37,8 @@ db-scripts
 
 Simply run `docker-compose up -d` and the databases will be up and running and ready to be analyzed.
 
+You can find sample values for your Tidal Tools `Databases.yaml` file in this repo, in `./Databases.yaml.example`.
+
 ### Connecting
 
 #### MSSQL-2019

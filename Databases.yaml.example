@@ -1,0 +1,29 @@
+################################################################################################################################
+# This file contains the configuration settings for each one of the supported engines (Oracle, MS SQL, MySQL and Postgres).    #
+# Adjust the section that matches your database(s). You can delete the rest or comment it out.                                 #
+# For more information, please visit the Tidal Migrations guides.                                                              #
+# https://guides.tidalmg.com/analyze-database.html#getting-started                                                             #
+################################################################################################################################
+
+databases:
+    ########  MS SQL  ########
+    - id: 1 ## <-- Replace with your demo database's Tidal ID
+      name: "Airbnb Product database" ## <-- Replace with your demo database's Tidal name
+      engine: SQL Server
+      version: 15.0.4198.2
+      host: ""
+      port: 1433
+      db_name: "DemoMSSQLDatabase"
+      user: "tidal"
+      password: "Dev12345"
+      
+    #######  Postgres  ########
+    - id: 1 ## <-- Replace with your demo database's Tidal ID
+      name: "Airbnb Product database" ## <-- Replace with your demo database's Tidal name
+      engine: PostgreSQL
+      version: 10.5
+      host: ""
+      port: 5432
+      db_name: "postgres"
+      user: "tidal"
+      password: "Dev12345"
