@@ -46,7 +46,7 @@ services:
           - ./mysql-8/sql/tidal_setup.sql:/docker-entrypoint-initdb.d/tidal_setup.sql
     
     mssql:
-      image: mcr.microsoft.com/mssql/server:2019-latest
+      image: mcr.microsoft.com/mssql/server:2019-CU15-ubuntu-20.04
       environment: 
         - SA_PASSWORD=Dev12345
         - ACCEPT_EULA=Y
