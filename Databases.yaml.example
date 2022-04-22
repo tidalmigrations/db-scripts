@@ -20,3 +20,15 @@ databases:
       db_name: "postgres"
       user: "tidal"
       password: "Dev12345"
+    
+    ########  MySQL  ########
+    - id: 1 ## <-- Replace with your demo database's Tidal ID
+      name: "Airbnb Product database" ## <-- Replace with your demo database's Tidal name
+      engine: MySQL
+      version: 8.0
+      host: "ec2-18-142-50-121.ap-southeast-1.compute.amazonaws.com"
+      port: 3306
+      db_name: "tidal_db"
+      user: "tidal"
+      password: "Dev12345"
+
