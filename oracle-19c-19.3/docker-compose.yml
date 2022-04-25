@@ -10,5 +10,6 @@ services:
           - '51521:1521'
           - '55500:5500'
         volumes:
-          # copy the sql script to the /scripts dir
-          - ./sql/create_database.sql:/opt/oracle/scripts/create_database.sql
+          # copy the sql scripts to the /scripts dir
+          - ./sql/create_database.sql:/opt/oracle/scripts/create_database.sql,
+          - ./sql/create_database.sql:/opt/oracle/scripts/create_cdb_user.sql
