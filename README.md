@@ -29,6 +29,11 @@ db-scripts
 |       ├── create_tables.sql
 |       ├── fill_tables.sql
 |       └── tidal_setup.sql
+├── oracle-19c-19.3
+|   ├── docker-compose.yml
+|   ├── 19.3.0
+|   └── sql
+|       ├── create_database.sql
 ├── ...more to come
 
 ```
@@ -46,6 +51,30 @@ Connect as root user
 
 Connect as Tidal user
 `sqlcmd -S "<public-ipv4-dns>,1433" -U Tidal -P "Dev1234"`
+
+#### Oracle 19c-19.3
+
+Additional steps are required to spin up the oracle database. These instructions assume you're using the `oracle-databases` terraform script from the `infrastructure-deployments` repo to create the instance.
+
+After deploying the above instance, it will take around 45 minutes for the user data script to complete and the container to be initialized. Run `docker ps` to check the health of the container. Wait until it reads `healthy` before attempting to connect. It will read `unhealthy` before `healthy` because of how long it takes oracle to start.
+
+After confirming that the container is healthy, we need to connect to the database and fill it with data.
+
+`sudo docker exec -it --user=oracle <container-name> bash`
+
+Connect to the default PDB.
+
+`sqlplus SYS/Dev12345@ORCLPDB1 AS SYSDBA`
+
+Run this script in the SQL terminal. It creates tables, adds data and creates the tidal user.
+
+`@/opt/oracle/scripts/create_database.sql`
+
+Check that the tidal user exists by logging out (`exit`) and back in as this user.
+
+`sqlplus tidal/Dev12345@ORCLPDB1`
+
+You should now have a running oracle database to test against.
 
 ### Troubleshooting
 If you are running the scrips inside an ec2 instance, make sure you configure its security group and inbound rules to allow for port connectivity.

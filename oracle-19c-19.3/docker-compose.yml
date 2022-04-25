@@ -1,0 +1,15 @@
+version: '3.7'
+services:
+    oracle:
+        build: ./19.3.0
+        restart: always
+        environment:
+          - ORACLE_CHARACTERSET=AL32UTF8
+          - ORACLE_PWD=Dev12345
+        ports:
+          - '51521:1521'
+          - '55500:5500'
+        volumes:
+          # copy the sql scripts to the /scripts dir
+          - ./sql/create_database.sql:/opt/oracle/scripts/create_database.sql,
+          - ./sql/create_database.sql:/opt/oracle/scripts/create_cdb_user.sql
