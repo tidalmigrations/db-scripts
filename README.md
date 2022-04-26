@@ -54,19 +54,23 @@ Connect as Tidal user
 
 #### Oracle 19c-19.3
 
-Additional steps are required to spin up the oracle database. These instructions assume you're using the `oracle-databases` terraform script from the `infrastructure-deployments` repo to create the instance.
-
-After deploying the above instance, it will take around 45 minutes for the user data script to complete and the container to be initialized. Run `docker ps` to check the health of the container. Wait until it reads `healthy` before attempting to connect. It will read `unhealthy` before `healthy` because of how long it takes oracle to start.
-
 After confirming that the container is healthy, we need to connect to the database and fill it with data.
 
 `sudo docker exec -it --user=oracle <container-name> bash`
 
-Connect to the default PDB.
+Connect to the CDB.
+
+`sqlplus SYS/Dev12345@ORCLCDB AS SYSDBA`
+
+Run this script in the SQL terminal. It creates the CDB user Tidal Tools will use.
+
+`@/opt/oracle/scripts/create_cdb_user.sql`
+
+Exit sqlplus (`exit`) and connect to the default PDB.
 
 `sqlplus SYS/Dev12345@ORCLPDB1 AS SYSDBA`
 
-Run this script in the SQL terminal. It creates tables, adds data and creates the tidal user.
+Run this script in the SQL terminal. It creates tables, adds data and creates the PDB tidal user.
 
 `@/opt/oracle/scripts/create_database.sql`
 
