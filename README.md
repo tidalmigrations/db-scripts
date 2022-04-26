@@ -54,7 +54,9 @@ Connect as Tidal user
 
 #### Oracle 19c-19.3
 
-After confirming that the container is healthy, we need to connect to the database and fill it with data.
+Additional steps are required to spin up the oracle database. These instructions assume you're using the `oracle-databases` terraform script from the `infrastructure-deployments` repo to create the instance.
+
+After deploying the above instance, it will take around 45 minutes for the user data script to complete and the container to be initialized. Run `docker ps` to check the health of the container. Wait until it reads `healthy` before attempting to connect. It will read `unhealthy` before `healthy` because of how long it takes oracle to start.
 
 `sudo docker exec -it --user=oracle <container-name> bash`
 
