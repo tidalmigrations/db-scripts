@@ -12,4 +12,4 @@ services:
         volumes:
           # copy the sql scripts to the /scripts dir
           - ./sql/create_database.sql:/opt/oracle/scripts/create_database.sql,
-          - ./sql/create_database.sql:/opt/oracle/scripts/create_cdb_user.sql
+          - ./sql/create_cdb_user.sql:/opt/oracle/scripts/create_cdb_user.sql
