@@ -62,11 +62,19 @@ After confirming that the container is healthy, we need to connect to the databa
 
 `sudo docker exec -it --user=oracle <container-name> bash`
 
-Connect to the default PDB.
+Connect to the CDB.
+
+`sqlplus SYS/Dev12345@ORCLCDB AS SYSDBA`
+
+Run this script in the SQL terminal. It creates the CDB user Tidal Tools will use.
+
+`@/opt/oracle/scripts/create_cdb_user.sql`
+
+Exit sqlplus (`exit`) and connect to the default PDB.
 
 `sqlplus SYS/Dev12345@ORCLPDB1 AS SYSDBA`
 
-Run this script in the SQL terminal. It creates tables, adds data and creates the tidal user.
+Run this script in the SQL terminal. It creates tables, adds data and creates the PDB tidal user.
 
 `@/opt/oracle/scripts/create_database.sql`
 
