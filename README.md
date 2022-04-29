@@ -56,17 +56,39 @@ Connect as Tidal user
 
 Additional steps are required to spin up the oracle database. These instructions assume you're using the `oracle-databases` terraform script from the `infrastructure-deployments` repo to create the instance.
 
-After deploying the above instance, it will take around 45 minutes for the user data script to complete and the container to be initialized. Run `docker ps` to check the health of the container. Wait until it reads `healthy` before attempting to connect. It will read `unhealthy` before `healthy` because of how long it takes oracle to start.
+After deploying the above instance, it will take around 45 minutes for the user data script to complete and the container to be initialized. Run `docker ps` to check the health of the container. Wait until it reads `healthy` before attempting to connect. It may read `unhealthy` before `healthy` because of how long it takes oracle to start.
 
-After confirming that the container is healthy, we need to connect to the database and fill it with data.
+After confirming that the container is healthy, we can connect to it and get to work.
 
 `sudo docker exec -it --user=oracle <container-name> bash`
 
-Connect to the CDB.
+The type of Oracle database we're using is called a multitenant container database. This means that there's a CDB (container database) as the outside layer, and inside this CDB are multiple PDBs (pluggable databases). In our example, we have one PDB which sits inside our CDB.
+
+To allow Tidal Tools to work with this, we need to connect to the CDB and create a tidal user. We then need to ALSO connect to the PDB and create another tidal user. While we're in the PDB that's where we'll add the demo data. The only data that the CDB holds is the PDBs. 
+
+
+    ┌───CDB──────────────────────────────────────────────┐
+    │                                                    │
+    │   Tidal CDB user                                   │
+    │                                                    │
+    │       ┌────PDB──────────────────────────────┐      │
+    │       │                                     │      │
+    │       │    Tidal PDB user                   │      │
+    │       │                                     │      │
+    │       │    Demo data                        │      │
+    │       │                                     │      │
+    │       │                                     │      │
+    │       └─────────────────────────────────────┘      │
+    │                                                    │
+    │                                                    │
+    └────────────────────────────────────────────────────┘
+
+
+First, we connect to the CDB.
 
 `sqlplus SYS/Dev12345@ORCLCDB AS SYSDBA`
 
-Run this script in the SQL terminal. It creates the CDB user Tidal Tools will use.
+Run this script in the SQL terminal. It creates the CDB user that Tidal Tools will use.
 
 `@/opt/oracle/scripts/create_cdb_user.sql`
 
@@ -82,7 +104,7 @@ Check that the tidal user exists by logging out (`exit`) and back in as this use
 
 `sqlplus tidal/Dev12345@ORCLPDB1`
 
-You should now have a running oracle database to test against.
+You should now have a running oracle multitenant database to test against.
 
 ### Troubleshooting
 If you are running the scrips inside an ec2 instance, make sure you configure its security group and inbound rules to allow for port connectivity.
