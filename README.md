@@ -56,7 +56,7 @@ Connect as Tidal user
 
 Additional steps are required to spin up the oracle database. These instructions assume you're using the `oracle-databases` terraform script from the `infrastructure-deployments` repo to create the instance.
 
-After deploying the above instance, it will take around 45 minutes for the user data script to complete and the container to be initialized. Run `docker ps` to check the health of the container. Wait until it reads `healthy` before attempting to connect. It may read `unhealthy` before `healthy` because of how long it takes oracle to start.
+After deploying the above instance, **it will take around 45 minutes for the user data script to complete** and the container to be initialized. Run `docker ps` to check the health of the container. Wait until it reads `healthy` before attempting to connect. It may read `unhealthy` before `healthy` because of how long it takes oracle to start.
 
 After confirming that the container is healthy, we can connect to it and get to work.
 
