@@ -5,7 +5,7 @@ declare @SqlStatement3 nvarchar(4000)
 declare @ver int
 
 set @loginName = 'tidal'
-set @password  = 'Dev12345'
+set @password  = 'Dev/12345'
 select @ver = left(cast(SERVERPROPERTY('productversion') as varchar(50)), charindex('.', cast(SERVERPROPERTY('productversion') as varchar(50)))-1)
 
 declare @dbname varchar (100) 
